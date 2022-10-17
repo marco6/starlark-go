@@ -68,3 +68,10 @@ def bench_dict_equal(b):
     for _ in range(b.n):
         if largedict != largedict:
             fail("invalid comparison")
+
+def bench_to_string(b):
+    "Benchmark of toString operation"
+    mixed = { "int": 1, "string": "string", "list": [], "recursive_list": [], "bool": True, "nil": None, "tuple": (1, 2, 3) }
+    mixed["recursive_list"] += [ mixed ]
+    for _ in range(b.n):
+        str(mixed)
